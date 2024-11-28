@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('gift_links', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->integer('age');
-            $table->enum('gender', ['Masculino', 'Feminino', 'Outro']);
-            $table->json('gift_links')->nullable();
-            $table->foreignId('event_id')->constrained()->onDelete('cascade');
+            $table->foreignId('people_id')->constrained()->onDelete('cascade');
+            $table->string('link');
+            $table->text('observation')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('gift_links');
     }
 };
