@@ -12,10 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        function boot()
-        {
-            Blade::component('layouts.app', 'app-layout');
-        }
+  
     }
 
     /**
@@ -23,6 +20,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Blade::component('layouts.app', 'app-layout');
     }
 }
