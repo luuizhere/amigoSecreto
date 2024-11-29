@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('gift_links', function (Blueprint $table) {
             $table->id();
             $table->foreignId('people_id')->constrained()->onDelete('cascade');
-            $table->string('link');
+            $table->text('link');
             $table->text('observation')->nullable();
             $table->timestamps();
         });
