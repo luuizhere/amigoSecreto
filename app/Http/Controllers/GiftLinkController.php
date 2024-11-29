@@ -35,4 +35,24 @@ class GiftLinkController extends Controller
         }
         return $url;
     }
+
+    public function edit(Person $person, GiftLink $giftLink)
+    {
+        return view('gift-links.edit', compact('person', 'giftLink'));
+    }
+
+    public function update(Request $request, Person $person, GiftLink $giftLink)
+    {
+        $validated = $request->validate([
+            'link' => 'required|url',
+            'observation' => 'nullable|string',
+        ]);
+
+        $validated['link'] = strlen($validated['link']) > 100 ? 
+            file_get_contents('https://tinyurl.com/api-create.php?url=' . urlencode($validated['link'])) : 
+            $validated['link'];
+
+        $giftLink->update($validated);
+        return redirect()->route('events.show', $person->event_id)->with('success', 'Link atualizado com sucesso!');
+    }
 }

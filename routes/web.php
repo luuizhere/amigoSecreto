@@ -16,3 +16,6 @@ Route::delete('events/{event}/people/{person}', [PeopleController::class, 'destr
 
 Route::post('people/{person}/gift-links', [GiftLinkController::class, 'store'])->name('gift-links.store');
 Route::delete('people/{person}/gift-links/{giftLink}', [GiftLinkController::class, 'destroy'])->name('gift-links.destroy');
+
+Route::get('people/{person}/gift-links/{giftLink}/edit', [GiftLinkController::class, 'edit'])->name('gift-links.edit');
+Route::put('people/{person}/gift-links/{giftLink}', [GiftLinkController::class, 'update'])->name('gift-links.update');
