@@ -36,12 +36,12 @@ class GiftLinkController extends Controller
         return $url;
     }
 
-    public function edit(Person $person, GiftLink $giftLink)
+    public function edit(People $person, GiftLink $giftLink)
     {
         return view('gift-links.edit', compact('person', 'giftLink'));
     }
 
-    public function update(Request $request, Person $person, GiftLink $giftLink)
+    public function update(Request $request, People $person, GiftLink $giftLink)
     {
         $validated = $request->validate([
             'link' => 'required|url',
