@@ -8,7 +8,7 @@ use App\Models\People;
 
 class GiftLinkController extends Controller
 {
-    public function store(Request $request, Person $person)
+    public function store(Request $request, People $person)
     {
         $validated = $request->validate([
             'link' => 'required|url',
